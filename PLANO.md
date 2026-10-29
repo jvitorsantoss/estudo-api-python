@@ -13,8 +13,9 @@ O foco principal é **aprender**. O repositório também serve como **material d
 
 ## 🧑‍🏫 Como vamos trabalhar
 
-- **Um passo por vez**: o professor (Claude) explica o porquê, o aluno digita e conta o resultado
-- **O aluno escreve o código.** O Claude revisa e corrige junto
+- **Estilo videoaula**: o professor (Claude) explica **como a API funciona por dentro** (cliente/servidor, HTTP, portas, o que o framework faz), não só a sintaxe do Python
+- **Um passo por vez**: explica o conceito, o aluno faz e conta o resultado
+- **Nada de código pronto para copiar.** O professor explica, desafia o aluno a escrever a peça e depois revisa
 - Sem explicação básica de terminal, só o que importa para a API
 - **Cada passo concluído vira um commit** com mensagem clara
 - Depois de cada aula, o aluno escreve uma anotação **com as próprias palavras** na pasta `aulas/`
@@ -93,7 +94,20 @@ Cada arquivo em `aulas/` traz: **o que** foi feito, **por que**, os **comandos**
 - [x] Aula 1: O que é uma API (HTTP, métodos, CRUD, status codes)
 - [x] Planejamento do projeto (este arquivo)
 - [x] Repositório no GitHub (público): https://github.com/jvitorsantoss/estudo-api-python
-- [ ] **Próximo passo, Aula 2:** criar o ambiente virtual → `python -m venv .venv`
+- [x] `.gitignore` criado pelo aluno (`.venv/`, `__pycache__/`, `*.pyc`)
+- [x] Aula 2: ambiente virtual (`python -m venv .venv` + ativar com `.\.venv\Scripts\Activate.ps1`), FastAPI instalado (`pip install "fastapi[standard]"`) e `requirements.txt` com `fastapi[standard]`
+- [ ] **Aula 3 (em andamento): primeira rota**
+  - [x] Teoria: servidor fica esperando requisições, endereço `127.0.0.1` + porta `8000`, caminho da requisição (navegador → Uvicorn → FastAPI → resposta), papel do Uvicorn x FastAPI (ASGI), o objeto `app`
+  - [x] Peça 1: `from fastapi import FastAPI`
+  - [x] Peça 2: `app = FastAPI()` (aprendeu a diferença entre a classe e a instância, ou seja, os parênteses)
+  - [x] Teoria: decorators montam a "tabela de rotas" do `app`, a função da rota retorna um dicionário que vira JSON com status 200
+  - [ ] **👉 Próximo passo, Peça 3:** o `@app.get("/")` já está escrito. Falta escrever **a função logo abaixo dele**, retornando `{"mensagem": "Olá, mundo!"}`. ⚠️ Até lá, o `main.py` está incompleto e dá erro se rodar
+  - [ ] Depois: ligar o servidor com `fastapi dev main.py` e testar em `http://127.0.0.1:8000` e `/docs`
+
+### Ao voltar a estudar
+
+1. Ative a `.venv`: `.\.venv\Scripts\Activate.ps1` (aparece `(.venv)` no terminal)
+2. Em outro computador, crie a `.venv` antes (`python -m venv .venv`), ative e rode `pip install -r requirements.txt`
 
 ### Como continuar em outro computador
 
