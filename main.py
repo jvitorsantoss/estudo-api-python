@@ -2,7 +2,7 @@ from fastapi import FastAPI
 
 
 app = FastAPI()
-pessoa = []
+pessoas = []
 
 @app.get("/")
 def root():
@@ -11,4 +11,9 @@ def root():
 
 @app.get("/pessoas")
 def listar_pessoas ():
+    return pessoas
+
+@app.post("/pessoas")
+def cadastrar_pessoas(pessoa: dict):
+    pessoas.append(pessoa)
     return pessoa

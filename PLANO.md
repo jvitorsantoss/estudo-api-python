@@ -105,7 +105,16 @@ Cada arquivo em `aulas/` traz: **o que** foi feito, **por que**, os **comandos**
   - [x] Servidor ligado com `fastapi dev main.py` (recarrega sozinho ao salvar), testado em `http://127.0.0.1:8000` e em `/docs`
   - 🐛 **Erro que apareceu:** o dicionário ficou numa linha e o `return` sozinho em outra. A função devolveu `None`, que virou `null` no JSON, com status `200 OK`. Lição: o `return` devolve o que está **do lado dele**, e código sem erro não quer dizer código certo
 - [ ] Anotação da Aula 3 em `aulas/03-primeira-rota.md` (o aluno escreve, com as próprias palavras)
-- [ ] **👉 Próximo passo, Aula 4:** listar e cadastrar pessoas (`GET /pessoas` e `POST /pessoas`), guardando numa lista Python na memória
+- [ ] **Aula 4 (em andamento): listar e cadastrar pessoas**
+  - [x] Teoria: mesma rota com métodos diferentes (a tabela de rotas usa **método + caminho**), lista criada **fora das funções** (vive enquanto o servidor estiver ligado), lista de dicionários vira array de objetos em JSON
+  - [x] Teoria: anatomia de `@app.get("/pessoas")`. O `@` é quem pega a função de baixo, `get` é o método e `"/pessoas"` é o caminho. Sem o `@` a rota não é registrada (dá 404)
+  - [x] Peça 1: `pessoas = []` + `GET /pessoas` com `listar_pessoas()` retornando a lista (veio `[]`)
+  - [x] Teoria: `input()` não funciona numa API (lê o teclado do **servidor**). Os dados vêm do cliente no **corpo** da requisição. Parâmetro `pessoa: dict` faz o FastAPI pegar o JSON do corpo
+  - [x] Peça 2: `POST /pessoas` com `pessoa: dict`, `pessoas.append(pessoa)` e `return pessoa`. Testado e funcionando
+  - [ ] Pendente: renomear `cadastrar_pessoas` para `cadastrar_pessoa` (cadastra uma por vez)
+  - [ ] **👉 Próximo passo:** cadastrar pessoas pelo `/docs` (Try it out), ver elas em `/pessoas` e fazer o **experimento**: salvar o `main.py`, deixar o servidor recarregar e responder **por que as pessoas somem**
+  - [ ] Depois: gerar o `id` de cada pessoa automaticamente (campo do plano que ainda falta)
+- [ ] Anotação da Aula 4 em `aulas/04-listar-e-cadastrar.md`
 
 ### Ao voltar a estudar
 
