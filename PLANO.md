@@ -96,18 +96,24 @@ Cada arquivo em `aulas/` traz: **o que** foi feito, **por que**, os **comandos**
 - [x] Repositório no GitHub (público): https://github.com/jvitorsantoss/estudo-api-python
 - [x] `.gitignore` criado pelo aluno (`.venv/`, `__pycache__/`, `*.pyc`)
 - [x] Aula 2: ambiente virtual (`python -m venv .venv` + ativar com `.\.venv\Scripts\Activate.ps1`), FastAPI instalado (`pip install "fastapi[standard]"`) e `requirements.txt` com `fastapi[standard]`
-- [ ] **Aula 3 (em andamento): primeira rota**
+- [x] **Aula 3: primeira rota** (concluída em 31/10/2026)
   - [x] Teoria: servidor fica esperando requisições, endereço `127.0.0.1` + porta `8000`, caminho da requisição (navegador → Uvicorn → FastAPI → resposta), papel do Uvicorn x FastAPI (ASGI), o objeto `app`
   - [x] Peça 1: `from fastapi import FastAPI`
-  - [x] Peça 2: `app = FastAPI()` (aprendeu a diferença entre a classe e a instância, ou seja, os parênteses)
+  - [x] Peça 2: `app = FastAPI()` (classe é o molde, os parênteses constroem a instância, como `list()`)
   - [x] Teoria: decorators montam a "tabela de rotas" do `app`, a função da rota retorna um dicionário que vira JSON com status 200
-  - [ ] **👉 Próximo passo, Peça 3:** o `@app.get("/")` já está escrito. Falta escrever **a função logo abaixo dele**, retornando `{"mensagem": "Olá, mundo!"}`. ⚠️ Até lá, o `main.py` está incompleto e dá erro se rodar
-  - [ ] Depois: ligar o servidor com `fastapi dev main.py` e testar em `http://127.0.0.1:8000` e `/docs`
+  - [x] Peça 3: `@app.get("/")` + função `root()` retornando `{"mensagem": "Olá, mundo!"}`
+  - [x] Servidor ligado com `fastapi dev main.py` (recarrega sozinho ao salvar), testado em `http://127.0.0.1:8000` e em `/docs`
+  - 🐛 **Erro que apareceu:** o dicionário ficou numa linha e o `return` sozinho em outra. A função devolveu `None`, que virou `null` no JSON, com status `200 OK`. Lição: o `return` devolve o que está **do lado dele**, e código sem erro não quer dizer código certo
+- [ ] Anotação da Aula 3 em `aulas/03-primeira-rota.md` (o aluno escreve, com as próprias palavras)
+- [ ] **👉 Próximo passo, Aula 4:** listar e cadastrar pessoas (`GET /pessoas` e `POST /pessoas`), guardando numa lista Python na memória
 
 ### Ao voltar a estudar
 
-1. Ative a `.venv`: `.\.venv\Scripts\Activate.ps1` (aparece `(.venv)` no terminal)
+1. Ative a `.venv` (aparece `(.venv)` no terminal):
+   - **Linux/macOS:** `source .venv/bin/activate`
+   - **Windows (PowerShell):** `.\.venv\Scripts\Activate.ps1`
 2. Em outro computador, crie a `.venv` antes (`python -m venv .venv`), ative e rode `pip install -r requirements.txt`
+3. Ligue o servidor com `fastapi dev main.py`
 
 ### Como continuar em outro computador
 
